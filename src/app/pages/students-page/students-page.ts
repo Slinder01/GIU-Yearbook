@@ -8,8 +8,10 @@
    2. Loading / error / empty states
    3. Filtering + sorting with signals and `computed`
    ===================================================================== */
+
 import { Component, OnInit, computed, inject, signal } from '@angular/core';
 
+import { StudentCard } from '../../components/student-card/student-card';
 import { Student } from '../../models/student.model';
 import { StudentService } from '../../services/student.service';
 
@@ -18,6 +20,7 @@ type SortMode = 'featured' | 'name';
 
 @Component({
   selector: 'app-student-page',
+  imports: [StudentCard],
   templateUrl: './students-page.html',
   styleUrl: './students-page.css',
 })
