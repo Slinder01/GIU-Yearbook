@@ -79,7 +79,7 @@
 } @else if (errorMessage()) {
   <p class="status status--error" role="alert">{{ errorMessage() }}</p>
 } @else if (visibleStudents().length === 0) {
-  <p class="status">No students match your search. Try a different name or faculty.</p>
+  <p class="status">No students match your search. Try a different gname or faculty.</p>
 } @else {
   <!-- STEP 5: THE GRID. One <app-student-card> per student.
        [student]="s" passes the data into the card's input(). -->
@@ -88,7 +88,7 @@
       <!-- STUDENT CARD GOES HERE -->
 
       <!-- <h2>{{ s.name }}</h2> --> 
-       <app-student-card [student]="s" />
+       <app-student-card  [student]="s" />
 
     }
   </div>

@@ -6,7 +6,8 @@
    ===================================================================== */
 import { Component, signal } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
-
+import { SavedService } from '../../services/saved.service';
+import { computed, inject } from '@angular/core';
 @Component({
   selector: 'app-header',
   // STEP 1: RouterLink makes links navigate WITHOUT reloading the page.
@@ -16,6 +17,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
   styleUrl: './header.css',
 })
 export class Header {
+  private readonly saved = inject(SavedService);
   // STEP 2: Navigation data as an array. WHY: the template loops over it
   // with @for, so adding a link means adding one line here, not HTML.
   // `exact: true` means "active only on exactly '/'". Without it the home
