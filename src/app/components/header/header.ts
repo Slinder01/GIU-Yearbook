@@ -4,10 +4,10 @@
    FIGMA: Select the header in "Class of 2028 · Student directory".
           Notice 3 parts: logo + title, 3 navigation links, login button.
    ===================================================================== */
-import { Component, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { SavedService } from '../../services/saved.service';
-import { computed, inject } from '@angular/core';
+import { AuthService } from '../../services/auth.service';
 @Component({
   selector: 'app-header',
   // STEP 1: RouterLink makes links navigate WITHOUT reloading the page.
@@ -18,6 +18,8 @@ import { computed, inject } from '@angular/core';
 })
 export class Header {
   private readonly saved = inject(SavedService);
+  protected readonly auth = inject(AuthService);
+
   // STEP 2: Navigation data as an array. WHY: the template loops over it
   // with @for, so adding a link means adding one line here, not HTML.
   // `exact: true` means "active only on exactly '/'". Without it the home

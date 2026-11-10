@@ -15,7 +15,7 @@
         <!-- (error) runs if the file is missing.
              TIP: export the logo from Figma and save it as
              public/images/giu-logo.png -->
-        <img class="brand__logo" src="images/giu-logo.png"
+        <img class="brand__logo" src="/images/giu-logo.png"
              alt="German International University" (error)="logoFailed.set(true)">
       } @else {
         <span class="brand__fallback">GIU</span>
@@ -41,13 +41,19 @@
 
     <!-- STEP 4: The login button uses the shared .btn styles from styles.css. -->
     <div class="header__actions">
-      <p class="header__saved" aria-live="polite">
-        Saved <span class="header__count">{{ saved.count() }}</span>
-      </p>
-      <a class="btn header__login" routerLink="/login">
-        Student login
-        <img src="icons/arrow-up-right.svg" alt="" aria-hidden="true" />
-      </a>
-    </div>
+     <!-- Signed in? Show "My Profile". Not signed in? Show "Student login". -->
+@if (auth.currentUser()) {
+ <a class="btn header__login" routerLink="/profile">
+ My Profile
+ <img src="/icons/user-round.svg" alt="" aria-hidden="true" />
+ </a>
+} @else {
+ <a class="btn header__login" routerLink="/login">
+ Student login
+ <img src="/icons/arrow-up-right.svg" alt="" aria-hidden="true" />
+ </a>
+}
+
+  </div>
   </div>
 </header>

@@ -5,9 +5,10 @@
          inside <router-outlet> (see app.html) when the URL changes.
    ===================================================================== */
 import { Routes } from '@angular/router';
-
+import { LoginPage } from './pages/login-page/login-page';
 import { StudentsPage } from './pages/students-page/students-page';
 import { PlaceholderPage } from './pages/placeholder-page/placeholder-page';
+import { authGuard } from './gaurds/auth.guard';
 
 export const routes: Routes = [
   // STEP 1: The landing page. An empty path '' means "the home URL".
@@ -18,11 +19,17 @@ export const routes: Routes = [
   // TIP: When you build the real page, replace `PlaceholderPage` with it.
   { path: 'teachers', component: PlaceholderPage, data: { title: 'Teachers & Staff' } },
   { path: 'gallery', component: PlaceholderPage, data: { title: 'Gallery' } },
-  { path: 'login', component: PlaceholderPage, data: { title: 'Student login' } },
-
   // STEP 3: `:id` is a route PARAMETER. /students/3 and /students/7 both
   // match this route. The page can read the number later.
   { path: 'students/:id', component: PlaceholderPage, data: { title: 'Student story' } },
+  { path: 'login', component: LoginPage, title: 'Student login · GIU Yearbook' },
+  {
+    path: 'profile',
+    component: PlaceholderPage,
+    title: 'My profile · GIU Yearbook',
+    data: { title: 'My profile' },
+    canActivate: [authGuard],
+  },
 
   // STEP 4: Wildcard. Any unknown URL goes back to the home page.
   // COMMON MISTAKE: this MUST be last. Routes are matched top to bottom.

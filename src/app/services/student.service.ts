@@ -33,7 +33,7 @@ export class StudentService {
       // delay(400) waits 400ms so students can SEE the loading state,
       // just like a real network request would take time.
       return this.http
-        .get<Student[]>('mock-api/students.json')
+        .get<Student[]>('/mock-api/students.json')
         .pipe(delay(400));
     }
 
@@ -42,5 +42,4 @@ export class StudentService {
     return this.http.get<Student[]>(`${environment.apiUrl}/students`);
   }
 }
-
 
